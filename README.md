@@ -13,3 +13,16 @@ let age = 10;
 age = 'welcome'; // bad!! 가독성이 떨어 져요!
 ```
 - OOP가 가능하다.
+
+## How To Study?
+- 자바스크립트의 기본 문법을 공부합니다.
+- 타입 시스템을 정확히 이해한다.
+- [TypeScript](https://www.typescriptlang.org)
+
+## 타입스크립트 컴파일러 툴
+1. tsc
+- 브라우저는 타입스크립트를 이해할 수 없어요 ts-> js로 컴파일 합시다
+```bash
+tsc -w(--watch)
+```
+> ts-node를 사용하면 한 번에 바로 사용할 수 있습니다.
