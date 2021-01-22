@@ -1,5 +1,5 @@
 {
-    class User{
+       class User{
         private internalAge = 4;
         get fullName():string{
             return `${this.firstName} ${this.lastName}`

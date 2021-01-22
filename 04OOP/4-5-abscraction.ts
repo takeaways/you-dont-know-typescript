@@ -1,17 +1,22 @@
 {
 
     /**
-     * 
-     * 
+     * 1. private을 이용하여 정말 사용할 함수만 노출 하는 추상화
+     * 2. interface를 활용한 추상화
      * 
      */
-
     type CoffeeCup = {
         shots:number;
         hasMilke:boolean;
     }
 
-    class CoffeeMachine{
+
+    interface CoffeeMaker{
+        makeCoffee(shots:number):CoffeeCup;
+    }
+
+
+    class CoffeeMachine implements CoffeeMaker{
         private static BEANS_GRAM_PER_SHOT = 7; 
         private coffeeBeans:number; 
 
@@ -23,7 +28,7 @@
             return new CoffeeMachine(coffeeBeans)
         }
 
-        grindBeas(shots:number){
+        private grindBeas(shots:number){
             console.log(`grind beans ${shots}`)
                const totalGram = shots * CoffeeMachine.BEANS_GRAM_PER_SHOT
             if(this.coffeeBeans < totalGram){
@@ -31,10 +36,10 @@
             }
             this.coffeeBeans -= totalGram;
         }
-        preheat():void{
+        private preheat():void{
             console.log('heating ..... ')
         }
-        extract(shots:number):CoffeeCup{
+        private extract(shots:number):CoffeeCup{
             console.log(`Pulling ${shots}`);
             return {
                 shots,
@@ -56,11 +61,16 @@
         }
     }
 
-    const machine =  CoffeeMachine.makeMachine(15)
+    const machine:CoffeeMachine =  CoffeeMachine.makeMachine(15)
     machine.makeCoffee(2)
     machine.fillCoffeeBeanse(100)
     machine.makeCoffee(10)
 
+    const machine2:CoffeeMaker =  CoffeeMachine.makeMachine(15)
+    machine2.makeCoffee(2)
+    // machine2.fillCoffeeBeanse(100)
+    machine2.makeCoffee(10)
 
 
 }
+
