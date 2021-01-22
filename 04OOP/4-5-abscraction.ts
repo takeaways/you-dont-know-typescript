@@ -1,7 +1,7 @@
 {
 
     /**
-     * public (default), private(자신만), protected(자식 까지만) 접근제한자.
+     * 
      * 
      * 
      */
@@ -23,16 +23,29 @@
             return new CoffeeMachine(coffeeBeans)
         }
 
-        makeCoffee(shots:number):CoffeeCup{
-            const totalGram = shots * CoffeeMachine.BEANS_GRAM_PER_SHOT
+        grindBeas(shots:number){
+            console.log(`grind beans ${shots}`)
+               const totalGram = shots * CoffeeMachine.BEANS_GRAM_PER_SHOT
             if(this.coffeeBeans < totalGram){
                 throw new Error('Not enough coffee beans!!');
             }
             this.coffeeBeans -= totalGram;
+        }
+        preheat():void{
+            console.log('heating ..... ')
+        }
+        extract(shots:number):CoffeeCup{
+            console.log(`Pulling ${shots}`);
             return {
                 shots,
                 hasMilke:false
             }
+        }
+
+        makeCoffee(shots:number):CoffeeCup{
+            this.grindBeas(shots);
+            this.preheat();
+            return this.extract(shots);
         }
 
         fillCoffeeBeanse(beans:number){
