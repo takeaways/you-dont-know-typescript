@@ -1,10 +1,5 @@
 {
 
-    /**
-     * 1. private을 이용하여 정말 사용할 함수만 노출 하는 추상화
-     * 2. interface를 활용한 추상화 -  접근가능한 범위를 규약 시킬 수 있어요
-     * 
-     */
     type CoffeeCup = {
         shots:number;
         hasMilke:boolean;
@@ -15,18 +10,13 @@
         makeCoffee(shots:number):CoffeeCup;
     }
 
-    interface CommercialCoffeeMaker{
-        makeCoffee(shots:number):CoffeeCup;
-        fillCoffeeBeans(beans:number):void;
-        clean():void
-    }
 
 
-    class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker{
+    class CoffeeMachine implements CoffeeMaker{
         private static BEANS_GRAM_PER_SHOT = 7; 
         private coffeeBeans:number; 
 
-        private constructor(coffeeBeans:number){
+        constructor(coffeeBeans:number){
             this.coffeeBeans = coffeeBeans;
         }
 
@@ -71,37 +61,31 @@
         }
     }
 
-    const machine:CoffeeMachine =  CoffeeMachine.makeMachine(15)
-    machine.makeCoffee(2)
-    machine.fillCoffeeBeans(100)
-    machine.makeCoffee(10)
-
-    const machine2:CommercialCoffeeMaker =  CoffeeMachine.makeMachine(15)
-    machine2.makeCoffee(2)
-    machine2.fillCoffeeBeans(100)
-    machine2.makeCoffee(10)
-
-
-
-    class AmatureUser{
-        constructor(private machine:CoffeeMaker){}
-        makeCoffee(){
-            const coffee = this.machine.makeCoffee(2)
+    class CafeLatteMachine extends CoffeeMachine{
+        constructor(coffeeBeans:number,public readonly serialNumber:string){
+            super(coffeeBeans)
         }
-    }
-    class ProBarista{
-        constructor(private machine:CommercialCoffeeMaker){}
-        makeCoffee(){
-            const coffee = this.machine.makeCoffee(2)
-            this.machine.fillCoffeeBeans(45);
-            this.machine.clean();
+        private seamMilk():void{
+            console.log("Steming some milk...")
+        }
+        makeCoffee(shots:number):CoffeeCup{
+            const coffee = super.makeCoffee(shots); 
+            this.seamMilk();
+            return {   
+                ...coffee,
+                hasMilke:true
+            }
         }
     }
 
-    const maker: CoffeeMachine = CoffeeMachine.makeMachine(40);
-    const amature = new AmatureUser(maker);
-    amature.makeCoffee()
-    const pro = new ProBarista(maker)
+    const machine:CoffeeMachine =  CoffeeMachine.makeMachine(24)
+    const latteMachine = new CafeLatteMachine(24,'2222')
+    console.log(latteMachine.serialNumber)
+    const mylatte = latteMachine.makeCoffee(2)
+    console.log(mylatte)
 
+
+
+    
 }
 
