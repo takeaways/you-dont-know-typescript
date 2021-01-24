@@ -80,7 +80,6 @@
 
     const machine:CoffeeMachine =  CoffeeMachine.makeMachine(24)
     const latteMachine = new CafeLatteMachine(24,'2222')
-    console.log(latteMachine.serialNumber)
     const mylatte = latteMachine.makeCoffee(2)
     console.log(mylatte)
 
