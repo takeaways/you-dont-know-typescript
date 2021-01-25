@@ -1,0 +1,27 @@
+{
+  "name": "you-dont-know-typscript",
+  "version": "1.0.0",
+  "description": "## 타입스크립트란? - 자바스크립트를 베이스로 하는 superset of javascript - Statically Typed (compile errros) - 자바스크립트 런타임이 사용하는 어느 곳에서든 사용할 수 있다 - ts -> ( compiler tsc or babel )-> js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomadGeonilJang/you-dont-know-typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nomadGeonilJang/you-dont-know-typescript/issues"
+  },
+  "homepage": "https://github.com/nomadGeonilJang/you-dont-know-typescript#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
+    "eslint": "^7.18.0",
+    "eslint-plugin-react": "^7.22.0",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {}
+}
