@@ -1,4 +1,6 @@
 # OOP
+# Favor Composition over Inheritance
+- 상속대신 컴포지션을 선호 하라!
 
 ## OOP PRINCIPLES
 1. Encapsulation : 캡슐화
@@ -13,3 +15,12 @@
     - EventTarget <- Node <- [Document / Element / Text] 즉 다 이벤트가 있구나
 4. Polymorphism : 다형성
     - 공통된 함수로 기능을 접근 할 수 있다.
+
+
+## 상속의 문제점
+1. 족보가 꼬인다.
+    - 상속의 깊이가 깊어지면 깊어 질 수록 복잡도가 증가 한다.
+2. 수직 적으로 관계가 형성 된다!
+    - 부모를 수정하면 모든 자식에게 영향이 간다.
+    - 새로운 기술을 도입할 때 어떻게 상속을 가져 가야 하는지.. 
+    - 타입스크립트는 상속이 오직1 번만 가능함.
