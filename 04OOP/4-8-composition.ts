@@ -141,11 +141,6 @@
     const latteMachine = new CafeLatteMachine(12, 'SS', cheapMilkMaker);
     const sweetLatteMachine = new SweetCoffeLatteMachine(12, cheapMilkMaker, candySugar)
 
-
-
-
-
-
     const sweetCoffeLatteMachine = new SweetCoffeLatteMachine(100, new CheapMilkSteamer, new AutomaticSugarMixer);
     const coffee = sweetCoffeLatteMachine.makeCoffee(2);
     console.log("-->", coffee);
