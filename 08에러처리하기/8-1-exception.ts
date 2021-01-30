@@ -51,11 +51,23 @@ function closeFile(fileName: string){
 }
 
 const fileNamee = 'not exist!💩'
-const fileName = 'file';
-try {
-  console.log(readFile(fileNamee));
-} catch (error) {
-  console.log(`catched !!`);  
+
+
+function run(){
+  const fileName = 'file';
+  try {
+    //에러가 발생하는 부분만 try ~ catch를 하는게 좋습니다.
+    console.log(readFile(fileNamee));
+  } catch (error) {
+    console.log(`catched !!`);  
+    return;
+  }finally{
+    //항상 실행이 보장합니다.
+    closeFile(fileName)
+    console.log(`closed`)
+  }
+
 }
 
-closeFile(fileNamee)
+run()
+
