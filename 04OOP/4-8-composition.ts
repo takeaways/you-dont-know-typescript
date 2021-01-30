@@ -32,6 +32,21 @@
             }
         }
     }
+    class FancyMilkSteamer implements MlikFrother{
+        //내부 동작
+        private steamMilke(): void {
+            console.log("Steaming some milk...")
+        }
+        //외부에서 사용
+        makeMilk(cup: CoffeeCup): CoffeeCup {
+            this.steamMilke();
+            return {
+                ...cup,
+                hasMilke: true,
+            }
+        }
+    }
+
 
     //설탕 제조기
     class AutomaticSugarMixer implements SugarProvider{
@@ -47,6 +62,7 @@
             }
         }
     }
+
     class CoffeeMachine implements CoffeeMaker {
         private static BEANS_GRAM_PER_SHOT = 7;
         private coffeeBeans: number;
@@ -100,7 +116,7 @@
         constructor(
             coffeeBeans: number,
             public readonly serialNumber: string,
-            private milkFother: CheapMilkSteamer) {
+            private milkFother: MlikFrother) {
             super(coffeeBeans)
         }
 
@@ -144,6 +160,8 @@
     const sweetCoffeLatteMachine = new SweetCoffeLatteMachine(100, new CheapMilkSteamer, new AutomaticSugarMixer);
     const coffee = sweetCoffeLatteMachine.makeCoffee(2);
     console.log("-->", coffee);
+
+    //--- 재사용성 증가 시키기
 }
 
 
