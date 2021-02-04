@@ -16,5 +16,5 @@
     "skipLibCheck": true,                    
     "forceConsistentCasingInFileNames": true 
   },
-  "exclude": ["node_modules", "study"]
+  "exclude": ["node_modules", "study","dist"]
 }
