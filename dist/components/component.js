@@ -8,7 +8,6 @@ export class BaseComponent {
         parent.insertAdjacentElement(position, this.element);
     }
     removeFrom(parent) {
-        console.log(parent, this.element.parentElement);
         if (parent !== this.element.parentElement) {
             throw new Error('Parent mismatch!');
         }
