@@ -5,21 +5,21 @@ interface Employee{
 }
 
 class FullTimeEmployee implements Employee{
-    pay(){
-        console.log('full time!')
-    }
-    workFullTime(){
+  pay(){
+    console.log('full time!');
+  }
+  workFullTime(){
 
-    }
+  }
 }
 
 class PartTimeEmployee implements Employee{
-    pay(){
-        console.log('parth time')
-    }
-    workPartTime(){
+  pay(){
+    console.log('parth time');
+  }
+  workPartTime(){
 
-    }
+  }
 }
 
 // 세부적인 타입을 인자로 받아서 정말 추상적인 타입으로 다시 리턴하는 함수는 💩💩💩
@@ -29,8 +29,8 @@ class PartTimeEmployee implements Employee{
 // }
 
 function pay<T extends Employee>(employee:T):T{
-    employee.pay();
-    return employee
+  employee.pay();
+  return employee;
 }
 
 
@@ -44,18 +44,18 @@ const giAfterPay = pay(gi);
 const bobAfterPay = pay(gi);
 
 const obj = {
-    name:'gi',
-    age:20
-}
+  name:'gi',
+  age:20
+};
 
 
 
 function getValue<T, K extends keyof T>(obj:T, key: K): T[K]{
-    if(!obj[key]){
-        throw new Error('Not Found Value')
-    }
-    return obj[key]
+  if(!obj[key]){
+    throw new Error('Not Found Value');
+  }
+  return obj[key];
 }
 
 
-console.log(getValue(obj,'name')) //gi
+console.log(getValue(obj,'name')); //gi
